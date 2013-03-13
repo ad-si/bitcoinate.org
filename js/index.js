@@ -33,7 +33,7 @@
 			attributes = [];
 
 
-		button.getElementsByTagName('img')[0].src = 'https://raw.github.com/adius/bitcoinate/v0.1.1/img/bitcoinate' + buttonSize + '.png';
+		button.getElementsByTagName('img')[0].src = 'https://raw.github.com/adius/bitcoinate/v0.1.2/img/bitcoinate' + buttonSize + '.png';
 		button.title = sentence + donateAddress;
 		button.dataset.size = buttonSize;
 		button.dataset.address = donateAddress;

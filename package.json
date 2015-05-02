@@ -23,5 +23,6 @@
   "devDependencies": {
     "nib": "^1.1.0",
     "stylus": "^0.51.1"
-  }
+  },
+  "version": "1.0.0"
 }

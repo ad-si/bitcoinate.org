@@ -1,0 +1,27 @@
+{
+  "name": "bitcoinate.org",
+  "description": "Easily receive bitcoin donations",
+  "main": "index.html",
+  "scripts": {
+    "start": "stylus -u nib --watch --out ./css styl",
+    "build": "stylus -u nib --compress --out ./css styl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adius/bitcoinate.org.git"
+  },
+  "keywords": [
+    "bitcoin",
+    "donation"
+  ],
+  "author": "Adrian Sieber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adius/bitcoinate.org/issues"
+  },
+  "homepage": "https://github.com/adius/bitcoinate.org#readme",
+  "devDependencies": {
+    "nib": "^1.1.0",
+    "stylus": "^0.51.1"
+  }
+}

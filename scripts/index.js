@@ -1,4 +1,5 @@
 ((window, document) => {
+  'use strict'
 
   const myBitcoinAddress = '1LFk8i74MTBEKfViAfvKsbX4mG2iFfRiBF'
   const areas = document.getElementsByTagName('textarea')

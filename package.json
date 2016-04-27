@@ -3,8 +3,10 @@
   "description": "Easily receive bitcoin donations",
   "main": "index.html",
   "scripts": {
-    "start": "stylus -u nib --watch --out ./css styl",
-    "build": "stylus -u nib --compress --out ./css styl"
+    "start": "stylus -u nib --watch styles --out styles",
+    "build": "stylus -u nib --compress styles --out styles",
+    "test": "npm run build && echo 'Open ./index.html for a visual test'",
+    "prepublish": "npm run test"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,7 @@
   "homepage": "https://github.com/adius/bitcoinate.org#readme",
   "devDependencies": {
     "nib": "^1.1.0",
-    "stylus": "^0.51.1"
+    "stylus": "^0.54.3"
   },
   "version": "1.0.0"
 }

@@ -5,8 +5,13 @@
   "scripts": {
     "start": "stylus -u nib --watch styles --out styles",
     "build": "stylus -u nib --compress styles --out styles",
-    "test": "npm run build && echo 'Open ./index.html for a visual test'",
+    "lint": "eslint --ignore-pattern *.min.js .",
+    "test": "npm run lint && npm run build && echo 'Open ./index.html for a visual test'",
     "prepublish": "npm run test"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "./node_modules/javascript-styleguide/.eslintrc.yaml"
   },
   "repository": {
     "type": "git",
@@ -23,6 +28,8 @@
   },
   "homepage": "https://github.com/adius/bitcoinate.org#readme",
   "devDependencies": {
+    "eslint": "^2.8.0",
+    "javascript-styleguide": "^0.2.2",
     "nib": "^1.1.0",
     "stylus": "^0.54.3"
   },

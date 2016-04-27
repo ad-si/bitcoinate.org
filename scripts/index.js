@@ -1,65 +1,84 @@
-(function(window, document) {
+((window, document) => {
 
-	var myBitcoinAddress = '1LFk8i74MTBEKfViAfvKsbX4mG2iFfRiBF',
-		areas = document.getElementsByTagName("textarea"),
-		elements = document.forms[0].elements,
-		i,
-		showCase = $('#showcase'),
-		URI = $('#URI')
+  const myBitcoinAddress = '1LFk8i74MTBEKfViAfvKsbX4mG2iFfRiBF'
+  const areas = document.getElementsByTagName('textarea')
+  const elements = document.forms[0].elements
 
-	function $(query) {
-		query = document.querySelectorAll(query)
+  function select (query) {
+    query = document.querySelectorAll(query)
 
-		return (query[1]) ? query : query[0]
-	}
+    return query[1] ? query : query[0]
+  }
 
-	$("#logo").addEventListener('click', function() {
-		window.prompt('Please donate bitcoins to:', myBitcoinAddress);
-	}, false);
+  const URI = select('#URI')
 
-	for(i = 0; i < elements.length; i++) {
-		elements[i].addEventListener('input', update, false);
-		elements[i].addEventListener('change', update, false);
-	}
+  select('#logo')
+    .addEventListener('click', () => {
+      window.prompt('Please donate bitcoins to:', myBitcoinAddress)
+    }, false)
 
-	function update() {
-		var buttonSize = $("#buttonSize").value,
-			donateAddress = $("#donateAddress").value || myBitcoinAddress,
-			type = URI.checked ? 'URI' : '',
-			amount = $("#amount").value || 0,
-			label = $("#label").value || "",
-			sentence = 'Please donate bitcoins to: ',
-			button = $('#showcase').firstElementChild,
-			attributes = [];
+  for (let index = 0; index < elements.length; index++) {
+    elements[index].addEventListener('input', update, false)
+    elements[index].addEventListener('change', update, false)
+  }
+
+  function update () {
+    const buttonSize = select('#buttonSize').value
+    const donateAddress = select('#donateAddress').value || myBitcoinAddress
+    const type = URI.checked ? 'URI' : ''
+    const amount = select('#amount').value || 0
+    const label = select('#label').value || ''
+    const sentence = 'Please donate bitcoins to: '
+    const button = select('#showcase').firstElementChild
+    const attributes = []
 
 
-		button.title = sentence + donateAddress;
-		button.dataset.size = buttonSize;
-		button.dataset.address = donateAddress;
-		type ? button.dataset.type = type : delete button.dataset.type;
-		(amount && URI.checked) ? button.dataset.amount = amount : delete button.dataset.amount;
-		(label && URI.checked) ? button.dataset.label = label : delete button.dataset.label;
+    button.title = sentence + donateAddress
+    button.dataset.size = buttonSize
+    button.dataset.address = donateAddress
 
-		$('#optional').style.display = URI.checked ? 'block' : 'none';
+    if (type) {
+      button.dataset.type = type
+    }
+    else {
+      delete button.dataset.type
+    }
 
-		//Build HTML-Code
-		attributes.push('class="bitcoinate"')
-		attributes.push('data-size="' + buttonSize + '"')
-		attributes.push('data-address="' + donateAddress + '"')
+    if (amount && URI.checked) {
+      button.dataset.amount = amount
+    }
+    else {
+      delete button.dataset.amount
+    }
 
-		if(URI.checked) {
-			if(type) attributes.push('data-type="' + type + '"')
-			if(amount) attributes.push('data-amount="' + amount + '"')
-			if(label) attributes.push('data-label="' + label + '"')
-		}
+    if (label && URI.checked) {
+      button.dataset.label = label
+    }
+    else {
+      delete button.dataset.label
+    }
 
-		$("#htmlCode").innerHTML = "<button " + attributes.join(' ') + ">bitcoinate</button>"
-	}
+    select('#optional').style.display = URI.checked ? 'block' : 'none'
 
-	for(i = 0; i < areas.length; i++) {
-		areas[i].addEventListener('click', function() {
-			this.select();
-		}, false);
-	}
+    // Build HTML-Code
+    attributes.push('class="bitcoinate"')
+    attributes.push('data-size="' + buttonSize + '"')
+    attributes.push('data-address="' + donateAddress + '"')
 
-})(window, document);
+    if (URI.checked) {
+      if (type) attributes.push('data-type="' + type + '"')
+      if (amount) attributes.push('data-amount="' + amount + '"')
+      if (label) attributes.push('data-label="' + label + '"')
+    }
+
+    select('#htmlCode').innerHTML = '<button ' +
+      attributes.join(' ') + '>bitcoinate</button>'
+  }
+
+  for (let index = 0; index < areas.length; index++) {
+    areas[index].addEventListener('click', function () {
+      this.select()
+    }, false)
+  }
+
+})(window, document)
